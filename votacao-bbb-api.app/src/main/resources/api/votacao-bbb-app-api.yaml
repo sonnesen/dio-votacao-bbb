@@ -1,0 +1,80 @@
+openapi: 3.0.2
+info:
+  title: Votação BBB API
+  version: '1.0'
+servers:
+  - url: http://localhost:8080/api/v1
+tags:
+  - name: status
+  - name: parameters
+paths:
+  /status:
+    get:
+      tags:
+        - status
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: string
+  /parameters:
+    get:
+      tags:
+        - parameters
+      responses:
+        '200':
+          description: OK
+    post:
+      tags:
+        - parameters
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ParameterRequest'
+        required: true
+      responses:
+        '201':
+          description: Parameter created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ParameterResponse'
+  /parameters/{key}:
+    get:
+      tags:
+        - parameters
+      parameters:
+        - name: key
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ParameterResponse'
+        '404':
+          description: Parameter not found
+
+components:
+  schemas:
+    ParameterRequest:
+      type: object
+      properties:
+        key:
+          type: string
+        value:
+          type: string
+    ParameterResponse:
+      type: object
+      properties:
+        key:
+          type: string
+        value:
+          type: string

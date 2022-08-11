@@ -1,0 +1,13 @@
+spring:
+    data:
+        mongodb:
+            database: votacao-db
+            host: localhost
+            password: secret
+            port: 27017
+            username: admin
+    kafka:
+        producer:
+            bootstrap-servers: 127.0.0.1:9092
+            key-serializer: org.apache.kafka.common.serialization.StringSerializer
+            value-serializer: org.apache.kafka.common.serialization.StringSerializer

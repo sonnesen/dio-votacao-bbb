@@ -1,0 +1,3 @@
+/docker/mongodb/mongo-volume/**
+.idea/**
+/docker/votacao-bbb-docker.iml
