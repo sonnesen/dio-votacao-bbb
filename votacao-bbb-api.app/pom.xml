@@ -17,7 +17,8 @@
         <java.version>11</java.version>
         <modelmapper.version>3.1.0</modelmapper.version>
         <swagger-codegen-maven-plugin.version>3.0.26</swagger-codegen-maven-plugin.version>
-        <swagger-annotations.version>2.1.12</swagger-annotations.version>
+        <swagger-annotations.version>2.2.2</swagger-annotations.version>
+        <springdoc-openapi-ui.version>1.6.9</springdoc-openapi-ui.version>
     </properties>
     <dependencies>
         <dependency>
@@ -51,6 +52,12 @@
             <groupId>io.swagger.core.v3</groupId>
             <artifactId>swagger-annotations</artifactId>
             <version>${swagger-annotations.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <scope>runtime</scope>
+            <optional>true</optional>
         </dependency>
 
         <dependency>

@@ -17,6 +17,7 @@
     <modules>
         <module>docker</module>
         <module>votacao-bbb-api.app</module>
+        <module>votacao-bbb-ms.app</module>
     </modules>
     
 </project>

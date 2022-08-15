@@ -24,11 +24,11 @@ public class ParameterController implements ParametersApi {
     private final ParameterRepository parameterRepository;
     private final ModelMapper modelMapper;
 
-    @GetMapping(value = "/{key}")
+    @GetMapping(value = "/{id}")
     @ResponseStatus(code = HttpStatus.OK)
     @Transactional(readOnly = true)
-    public ResponseEntity<ParameterResponseDTO> findByKey(@PathVariable String key) {
-        Parameter parameter = parameterRepository.findById(key)
+    public ResponseEntity<ParameterResponseDTO> retrieveById(@PathVariable String id) {
+        Parameter parameter = parameterRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Parameter not found."));
         ParameterResponseDTO response = modelMapper.map(parameter, ParameterResponseDTO.class);
         return ResponseEntity.ok(response);
@@ -37,7 +37,7 @@ public class ParameterController implements ParametersApi {
     @GetMapping
     @ResponseStatus(code = HttpStatus.OK)
     @Transactional(readOnly = true)
-    public ResponseEntity<List<ParameterResponseDTO>> list() {
+    public ResponseEntity<List<ParameterResponseDTO>> retrieveAll() {
         List<Parameter> parameterList = parameterRepository.findAll();
         List<ParameterResponseDTO> responseList = parameterList.stream()
                 .map(p -> modelMapper.map(p, ParameterResponseDTO.class))
